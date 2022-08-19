@@ -43,4 +43,6 @@ public class TestContainersConfiguration {
     template.afterPropertiesSet();
     return template;
   }
+
+
 }
