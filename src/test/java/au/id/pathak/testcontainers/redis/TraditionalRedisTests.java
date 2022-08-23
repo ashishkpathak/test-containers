@@ -1,5 +1,7 @@
 package au.id.pathak.testcontainers.redis;
 
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.parser.OpenAPIV3Parser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,6 +14,9 @@ public class TraditionalRedisTests {
 
   @Test
   public void testRedis() {
+    OpenAPI p = new OpenAPIV3Parser().read("");
+
+
     System.out.println("Hello");
   }
 }
