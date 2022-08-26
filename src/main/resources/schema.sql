@@ -1,5 +1,8 @@
-DROP TABLE IF EXISTS customers;
-CREATE TABLE customers(id int not null auto_increment primary key, first_name VARCHAR(255), last_name VARCHAR(255));
-insert into customers (first_name, last_name) values ('leonardo', 'da vinci');
-insert into customers (first_name, last_name) values ('vincent', 'van gogh');
-insert into customers (first_name, last_name) values ('raja', 'ravi verma');
+DROP TABLE IF EXISTS artist;
+CREATE TABLE artist(id serial primary key, first_name VARCHAR(255), last_name VARCHAR(255));
+insert into artist (first_name, last_name) values ('Leonardo', 'Da Vinci');
+insert into artist (first_name, last_name) values ('Vincent', 'Van gogh');
+insert into artist (first_name, last_name) values ('Amrita', 'Sher-Gil');
+insert into artist (first_name, last_name) values ('Raja', 'Ravi Verma');
+insert into artist (first_name, last_name) values ('Frida', 'Kahlo');
+insert into artist (first_name, last_name) values ('Hokusai', 'Katsushika');
