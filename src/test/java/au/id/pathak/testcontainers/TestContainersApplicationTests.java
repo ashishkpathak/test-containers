@@ -8,50 +8,46 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
-import org.springframework.test.context.TestPropertySource;
-import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.apache.commons.lang3.StringUtils.containsIgnoreCase;
 
-@SpringBootTest(classes = { ArtistsApplication.class })
+@SpringBootTest
 @Testcontainers
-@ActiveProfiles("test")
 class TestContainersApplicationTests {
 
   @Autowired
   private ArtistDao artistDao;
 
+//docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
   @Container
-  static PostgreSQLContainer container =
-      (PostgreSQLContainer) new PostgreSQLContainer("postgres:latest").withReuse(true);
-
+  private static PostgreSQLContainer container = (PostgreSQLContainer) new PostgreSQLContainer("postgres:latest");
 
   @DynamicPropertySource
-  public static void overloadedProperties(DynamicPropertyRegistry registry) {
-    registry.add("spring.datasource.url",()->((PostgreSQLContainer)container).getJdbcUrl());
-    registry.add("spring.datasource.username",()-> ((PostgreSQLContainer)container).getUsername());
-    registry.add("spring.datasource.password", ()-> ((PostgreSQLContainer)container).getPassword());
+  public static void overrideProperties(DynamicPropertyRegistry registry){
+    registry.add("spring.datasource.username", container::getUsername);
+    registry.add("spring.datasource.password", container::getPassword);
+    registry.add("spring.datasource.database", container::getDatabaseName);
+    registry.add("spring.datasource.url", container::getJdbcUrl);
   }
 
   @Test
-  public void testDatabaseConnections() {
-    Integer onYourHost = container.getMappedPort(5432);
-
-
-    String containerId = container.getContainerId();
-    System.out.println(containerId);
-
-    // container.withExposedPorts(15432);
+  public void test_all_artists_exists() {
     List<Artist> all = artistDao.findAll();
     Assert.assertTrue(all.size() == 6);
-
     all.forEach(System.out::println);
+  }
+
+  @Test
+  public void test_van_gogh_exists() {
+    List<Artist> all = artistDao.findAll();
+    boolean vanGogh = false;
+    long van_gogh = all.stream().filter(artist -> containsIgnoreCase(artist.getLastName(), "van gogh")).count();
+    Assert.assertTrue(van_gogh == 1);
   }
 
 }
