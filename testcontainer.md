@@ -4,7 +4,7 @@ Test container for integration testing and local development.
   <br />
   <br />
   <a href="https://github.com/ashishkpathak/test-containers">
-    <img src="testcontainer.png" alt="Test Container" width="400">
+    <img src="TestContainers.png" alt="Test Container" width="400">
   </a>
 </p>
 
