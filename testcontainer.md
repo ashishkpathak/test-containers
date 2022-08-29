@@ -1,4 +1,3 @@
-Test container for integration testing and local development.
 
 <p align="center">
   <br />
@@ -33,12 +32,12 @@ Test container for integration testing and local development.
 ### Introduction
 In this article, I will describe how Prepaid tribe is using test containers for integration testing.  TestContainers.org is a JVM library that allows users to run and manage Docker images and control them from Java code. It provides lightweight, throwaway instances of common databases, Selenium web browsers, or anything else that can run in a Docker container. Testcontainers make the following kinds of external components testing easier. External components can be one of:
 
-a. Database servers - for example, run real PostgreSQL/MySQL as a Docker image,
-b. Mocked HTTP server - you can mimic the behavior of other HTTP services by using Docker images from MockServer or WireMock,
-c. Caches - Redis - run real Redis as a Docker image,
-d. Messaging- streams or queues (like RabbitMQ and others),
-e. Cloud Managed services- AWS components like S3, Kinesis, DynamoDB, and others, which you can emulate with Localstack
-f. other application that can be run as a Docker image.
+- Database servers - for example, run real PostgreSQL/MySQL as a Docker image,
+- Mocked HTTP server - you can mimic the behavior of other HTTP services by using Docker images from MockServer or WireMock,
+- Caches - Redis - run real Redis as a Docker image,
+- Messaging- streams or queues (like RabbitMQ and others),
+- Cloud Managed services- AWS components like S3, Kinesis, DynamoDB, and others, which you can emulate with Localstack
+- other application that can be run as a Docker image.
 
 
 ### Scope
