@@ -38,14 +38,13 @@ class TestContainersApplicationTests {
   @Test
   public void test_all_artists_exists() {
     List<Artist> all = artistDao.findAll();
-    Assert.assertTrue(all.size() == 6);
     all.forEach(System.out::println);
+    Assert.assertTrue(all.size() == 6);
   }
 
   @Test
   public void test_van_gogh_exists() {
     List<Artist> all = artistDao.findAll();
-    boolean vanGogh = false;
     long van_gogh = all.stream().filter(artist -> containsIgnoreCase(artist.getLastName(), "van gogh")).count();
     Assert.assertTrue(van_gogh == 1);
   }

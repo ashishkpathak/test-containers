@@ -1,0 +1,16 @@
+version: 1.0.{build}
+pull_requests:
+  do_not_increment_build_number: true
+branches:
+  only:
+  - feature/plain_test
+skip_tags: true
+image: Ubuntu1804
+clone_depth: 5
+clone_folder: /apps/test-containers
+environment:
+  JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
+build_script:
+- sh: mvn clean package
+test_script:
+- sh: mvn test
