@@ -7,6 +7,25 @@ Test container for integration testing and local development.
     <img src="TestContainers.png" alt="Test Container" width="400">
   </a>
 </p>
+<!-- Badges -->
+<p align="center">
+  <!-- CI -->
+  <a href="https://ci.appveyor.com/api/projects/status/5n0s6lbigi8wji96/branch/main?svg=true">
+    <img src="https://ci.appveyor.com/api/projects/status/5n0s6lbigi8wji96/branch/main?svg=true">
+  </a>
+  
+  <!-- Github version -->
+ 
+  <!-- <a href="releases">
+    <img src="https://img.shields.io/github/v/release/guardsquare/proguard">
+  </a> -->
+    
+  <!-- License -->
+  <a href="LICENSE">
+    <img src="https://img.shields.io/github/license/guardsquare/proguard">
+  </a>
+
+</p>
 
 ### Integration testing
 
