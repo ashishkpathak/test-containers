@@ -1,5 +1,12 @@
 Test container for integration testing and local development.
 
+<p align="center">
+  <br />
+  <br />
+  <a href="https://github.com/ashishkpathak/test-containers">
+    <img src="testcontainer.png" alt="Test Container" width="400">
+  </a>
+</p>
 
 ### Integration testing
 
