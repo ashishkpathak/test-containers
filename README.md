@@ -30,7 +30,7 @@
 
 
 ### Introduction
-In this article, I will describe how Prepaid tribe is using test containers for integration testing.  TestContainers.org is a JVM library that allows users to run and manage Docker images and control them from Java code. It provides lightweight, throwaway instances of common databases, Selenium web browsers, or anything else that can run in a Docker container. Testcontainers make the following kinds of external components testing easier. External components can be one of:
+In this article, I will describe how test containers can be used for integration testing. <a href="testcontainers.org">TestContainers</a> is a JVM library that allows users to run and manage Docker images and control them from Java code. It provides lightweight, throwaway instances of common databases, Selenium web browsers, or anything else that can run in a Docker container. Testcontainers make the following kinds of external components testing easier. External components can be one of:
 
 - Database servers - for example, run real PostgreSQL/MySQL as a Docker image,
 - Mocked HTTP server - you can mimic the behavior of other HTTP services by using Docker images from MockServer or WireMock,
@@ -83,7 +83,7 @@ In this example I'm using Postgres, but you can use any database as per your req
 I'm using springboot application, @SpringBootTest would load up the application context.  Jupiter (JUnit 5) integration is provided by means of the @Testcontainers annotation. The extension finds all fields that are annotated with @Container and calls their container lifecycle methods (methods on the Startable interface). Containers declared as static fields will be shared between test methods. They will be started only once before any test method is executed and stopped after the last test method has executed. Containers declared as instance fields will be started and stopped for every test method.
 
 ```java
-@SpringBootTest()
+@SpringBootTest
 @Testcontainers
 public class ApplicationIntegrationTests {
 
@@ -98,7 +98,7 @@ public class ApplicationIntegrationTests {
     public void test_all_artists_exists(){
 
             List<Artists> arts = artists.findAll();    
-            
+            Assert.assertTrue(all.size() == 6);
     }
 }
     
