@@ -30,7 +30,7 @@
 
 
 ### Introduction
-In this article, I will describe how test containers can be used for integration testing. <a href="testcontainers.org">TestContainers</a> is a JVM library that allows users to run and manage Docker images and control them from Java code. It provides lightweight, throwaway instances of common databases, Selenium web browsers, or anything else that can run in a Docker container. Testcontainers make the following kinds of external components testing easier. External components can be one of:
+In this article, I will describe how test containers can be used for integration testing. <a href="https://www.testcontainers.org">TestContainers</a> is a JVM library that allows users to run and manage Docker images and control them from Java code. It provides lightweight, throwaway instances of common databases, Selenium web browsers, or anything else that can run in a Docker container. Testcontainers make the following kinds of external components testing easier. External components can be one of:
 
 - Database servers - for example, run real PostgreSQL/MySQL as a Docker image,
 - Mocked HTTP server - you can mimic the behavior of other HTTP services by using Docker images from MockServer or WireMock,
